@@ -1,0 +1,18 @@
+import numpy
+
+# Read dimensions N and M
+n, m = map(int, input().split())
+
+# Read array A (N rows)
+a = numpy.array([input().split() for _ in range(n)], int)
+
+# Read array B (N rows)
+b = numpy.array([input().split() for _ in range(n)], int)
+
+# Perform and print operations
+print(a + b)           # Addition
+print(a - b)           # Subtraction
+print(a * b)           # Multiplication
+print(a // b)          # Integer Division (Floor Division)
+print(a % b)           # Modulo
+print(a ** b)          # Power
