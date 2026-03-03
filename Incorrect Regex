@@ -1,0 +1,18 @@
+import re
+
+# Read the number of test cases
+for _ in range(int(input())):
+    s = input()
+    try:
+        # Check if the pattern is valid
+        re.compile(s)
+        
+     
+        if "*+" in s or "++" in s or "?+" in s:
+            print(False)
+        else:
+            print(True)
+            
+    except re.error:
+        # If re.compile fails, it's definitely False
+        print(False)
