@@ -1,0 +1,16 @@
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+import numpy
+
+# Read N and M
+n, m = map(int, input().split())
+
+# Create the 2-D array from input
+my_array = numpy.array([input().split() for _ in range(n)], int)
+
+# Step 1: Compute sum along axis 0
+sum_along_axis_0 = numpy.sum(my_array, axis=0)
+
+# Step 2: Compute the product of those sums
+result = numpy.prod(sum_along_axis_0)
+
+print(result)
