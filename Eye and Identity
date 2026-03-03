@@ -1,0 +1,9 @@
+import numpy
+# Required to match the legacy formatting in the sample output
+numpy.set_printoptions(legacy='1.13')
+
+# Read N (rows) and M (columns)
+n, m = map(int, input().split())
+
+# Print the eye matrix with main diagonal 1s
+print(numpy.eye(n, m))
