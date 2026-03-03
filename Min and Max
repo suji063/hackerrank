@@ -1,0 +1,15 @@
+import numpy
+
+# Read dimensions N and M
+n, m = map(int, input().split())
+
+# Read the N x M array from input
+my_array = numpy.array([input().split() for _ in range(n)], int)
+
+# Step 1: Find the minimum along axis 1 (rows)
+min_along_axis_1 = numpy.min(my_array, axis=1)
+
+# Step 2: Find the maximum of those minimums
+result = numpy.max(min_along_axis_1)
+
+print(result)
