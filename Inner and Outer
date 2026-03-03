@@ -1,0 +1,13 @@
+# Enter your code here. Read input from STDIN. Print output to 
+import numpy
+
+# 1. Read array A and B from input
+# We use 'int' as the data type to match the sample output format
+a = numpy.array(input().split(), int)
+b = numpy.array(input().split(), int)
+
+# 2. Print the Inner Product
+print(numpy.inner(a, b))
+
+# 3. Print the Outer Product
+print(numpy.outer(a, b))
