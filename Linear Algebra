@@ -1,0 +1,15 @@
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+import numpy
+
+# 1. Read the dimension N of the square matrix
+n = int(input())
+
+# 2. Build the matrix A by reading N lines of input
+# We use 'float' to ensure precision for decimal values
+a = numpy.array([input().split() for _ in range(n)], float)
+
+# 3. Compute the determinant using linalg.det
+determinant = numpy.linalg.det(a)
+
+# 4. Round and print the result
+print(round(determinant, 2))
