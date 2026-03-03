@@ -1,0 +1,11 @@
+import numpy
+# Necessary for the exact spacing in the sample output
+numpy.set_printoptions(legacy='1.13')
+
+# Read the 1-D array from input
+a = numpy.array(input().split(), float)
+
+# Print floor, ceil, and rint results
+print(numpy.floor(a))
+print(numpy.ceil(a))
+print(numpy.rint(a))
