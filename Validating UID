@@ -1,0 +1,33 @@
+import re
+import sys
+
+def validate_uid(uid):
+    # Rule 5: Exactly 10 characters
+    if len(uid) != 10:
+        return "Invalid"
+    
+    # Rule 4: No character should repeat
+    if len(set(uid)) != 10:
+        return "Invalid"
+    
+    # Rule 3: Only alphanumeric characters (a-z, A-Z, 0-9)
+    if not re.match(r'^[a-zA-Z0-9]{10}$', uid):
+        return "Invalid"
+    
+    # Rule 1: At least 2 uppercase English alphabet characters
+    if len(re.findall(r'[A-Z]', uid)) < 2:
+        return "Invalid"
+    
+    # Rule 2: At least 3 digits (0-9)
+    if len(re.findall(r'[0-9]', uid)) < 3:
+        return "Invalid"
+    
+    return "Valid"
+
+if __name__ == "__main__":
+    # Read number of test cases
+    input_data = sys.stdin.read().splitlines()
+    if input_data:
+        t = int(input_data[0])
+        for i in range(1, t + 1):
+            print(validate_uid(input_data[i]))
