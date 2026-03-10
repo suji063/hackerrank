@@ -1,0 +1,8 @@
+
+
+
+def product(fracs):
+    # reduce(function, iterable, initializer)
+    # Fraction(1) is the neutral multiplier (1/1)
+    t = reduce(lambda x, y: x * y, fracs)
+    return t.numerator, t.denominator
