@@ -1,0 +1,29 @@
+from html.parser import HTMLParser
+import sys
+
+class MyHTMLParser(HTMLParser):
+    def handle_starttag(self, tag, attrs):
+        # Print the tag name
+        print(tag)
+        # Print each attribute name and value
+        for name, value in attrs:
+            print(f"-> {name} > {value}")
+
+    def handle_startendtag(self, tag, attrs):
+        # Process self-closing tags like <br /> the same way
+        print(tag)
+        for name, value in attrs:
+            print(f"-> {name} > {value}")
+
+if __name__ == "__main__":
+    # Read number of lines
+    try:
+        line_count = int(sys.stdin.readline())
+    except ValueError:
+        exit()
+
+    # Read the entire snippet to correctly skip multiline comments
+    html_content = "".join([sys.stdin.readline() for _ in range(line_count)])
+    
+    parser = MyHTMLParser()
+    parser.feed(html_content)
