@@ -1,0 +1,11 @@
+
+
+def person_lister(f):
+    def inner(people):
+        # Sort by the age field (index 2), converted to int.
+        # Python's sort is stable, satisfying the 'order of input' requirement.
+        people.sort(key=lambda x: int(x[2]))
+        return [f(p) for p in people]
+    return inner
+
+
