@@ -1,0 +1,19 @@
+import re
+
+S = input()
+k = input()
+
+# We use a lookahead (?=...) to find overlapping matches.
+# The capturing group ( ) inside allows us to extract the match.
+pattern = re.compile(f'(?=({k}))')
+matches = list(pattern.finditer(S))
+
+if not matches:
+    print("(-1, -1)")
+else:
+    for m in matches:
+        # m.start() is the index where the lookahead found the match.
+        # The end index is start + length of k - 1 (to match sample output format).
+        start = m.start()
+        end = start + len(k) - 1
+        print(f"({start}, {end})")
