@@ -1,0 +1,22 @@
+import re
+
+# Read dimensions
+n, m = map(int, input().split())
+
+# Read the matrix
+matrix = [input() for _ in range(n)]
+
+# Transpose the matrix to read columns and join into a single string
+# zip(*matrix) groups the first characters, then second, etc.
+decoded_string = "".join(["".join(column) for column in zip(*matrix)])
+
+# Use regex to find symbols/spaces between alphanumeric characters
+# \b matches the boundary between alphanumeric and non-alphanumeric
+# [^a-zA-Z0-9]+ matches one or more non-alphanumeric characters
+pattern = r'(?<=[a-zA-Z0-9])[^a-zA-Z0-9]+(?=[a-zA-Z0-9])'
+
+# Replace the matched symbols with a single space
+final_output = re.sub(pattern, ' ', decoded_string)
+
+print(final_output)
+
