@@ -1,0 +1,34 @@
+import re
+import sys
+
+def extract_hex_colors():
+    # Read all lines from stdin
+    input_data = sys.stdin.read().splitlines()
+    if not input_data:
+        return
+    
+    n = int(input_data[0])
+    css_content = "\n".join(input_data[1:n+1])
+
+    # Regex breakdown:
+    # (?<=[: ])       -> Positive lookbehind: ensures the match is preceded by ':' or ' '
+    # #               -> Matches the literal '#'
+    # (?:             -> Start non-capturing group for the hex digits
+    #   [0-9a-fA-F]{6} -> Exactly 6 hex digits
+    #   |             -> OR
+    #   [0-9a-fA-F]{3} -> Exactly 3 hex digits
+    # )               -> End non-capturing group
+    # (?=[; ,)])      -> Positive lookahead: ensures it's followed by standard CSS delimiters
+    
+    # We use re.findall to get all occurrences in order
+    pattern = r'(?<=[: ])#([0-9a-fA-F]{6}|[0-9a-fA-F]{3})(?=[; ,)])'
+    
+    # Note: Using findall on a pattern with one capturing group returns only the group.
+    # To include the '#', we include it in the capture or print it manually.
+    matches = re.findall(r'(?<=[: ])(#[0-9a-fA-F]{6}|#[0-9a-fA-F]{3})(?=[; ,)])', css_content)
+
+    for color in matches:
+        print(color)
+
+if __name__ == "__main__":
+    extract_hex_colors()
