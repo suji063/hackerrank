@@ -1,0 +1,10 @@
+import numpy
+
+# Read the space-separated integers into a list
+arr = list(map(int, input().split()))
+
+# Convert to a NumPy array and reshape to 3x3
+result = numpy.reshape(numpy.array(arr), (3, 3))
+
+print(result)
+
