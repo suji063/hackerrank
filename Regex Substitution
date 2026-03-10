@@ -1,0 +1,32 @@
+import re
+import sys
+
+def solve():
+    # Read N
+    try:
+        line_count = int(sys.stdin.readline())
+    except EOFError:
+        return
+
+    for _ in range(line_count):
+        line = sys.stdin.readline().rstrip('\n')
+        
+        # We perform the substitution twice to handle overlapping spaces
+        # Example: " && && " -> the middle space is shared.
+        
+        # Step 1: Replace &&
+        # Pattern: space, &&, space
+        line = re.sub(r'(?<= )&&(?= )', 'and', line)
+        line = re.sub(r'(?<= )&&(?= )', 'and', line)
+        
+        # Step 2: Replace ||
+        # Pattern: space, ||, space
+        line = re.sub(r'(?<= )\|\|(?= )', 'or', line)
+        line = re.sub(r'(?<= )\|\|(?= )', 'or', line)
+        
+        print(line)
+
+if __name__ == "__main__":
+    solve()
+
+
