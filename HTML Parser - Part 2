@@ -1,0 +1,30 @@
+from html.parser import HTMLParser
+import sys
+
+class MyHTMLParser(HTMLParser):
+    def handle_comment(self, data):
+        # If the comment contains a newline, it is multi-line
+        if '\n' in data:
+            print(">>> Multi-line Comment")
+            print(data)
+        else:
+            print(">>> Single-line Comment")
+            print(data)
+
+    def handle_data(self, data):
+        # Only print data if it is not just a newline character
+        if data != '\n':
+            print(">>> Data")
+            print(data)
+
+if __name__ == "__main__":
+    # Read the number of lines
+    n = int(sys.stdin.readline())
+    
+    # Read all lines and join them into a single string
+    # This ensures multi-line comments are processed as one block
+    html_snippet = "".join([sys.stdin.readline() for _ in range(n)])
+    
+    parser = MyHTMLParser()
+    parser.feed(html_snippet)
+    parser.close()
