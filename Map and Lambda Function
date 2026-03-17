@@ -1,0 +1,15 @@
+cube = lambda x: x**3
+
+def fibonacci(n):
+    # The first two numbers are 0 and 1
+    fib = [0, 1]
+    if n == 0:
+        return []
+    elif n == 1:
+        return [0]
+    
+    # Generate subsequent numbers until we reach N terms
+    while len(fib) < n:
+        fib.append(fib[-1] + fib[-2])
+        
+    return fib
