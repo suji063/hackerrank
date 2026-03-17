@@ -1,0 +1,4 @@
+import re
+
+# The pattern matches either a comma or a dot
+regex_pattern = r"[.,]"
