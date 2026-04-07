@@ -1,0 +1,16 @@
+# Task: Read a line as a string and print the result using eval().
+# Sample Input: print(2 + 3)
+# Sample Output: 5
+
+import sys
+
+# Read the input line as a string
+# In Python 3, input() reads a line and returns it as a string.
+line = sys.stdin.readline().strip()
+
+# Evaluate the expression and print the result
+# eval() evaluates the string expression and returns the value.
+# For example, if the input is "print(2 + 3)", 
+# eval() will execute print(2+3) and return None, 
+# while printing "5" to the console.
+eval(line)
