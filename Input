@@ -1,0 +1,20 @@
+# Read x and k as integers from the first line
+# In Python 3, input() returns a string, so we map int over the split result.
+# In Python 2, raw_input() returns a string, which is then mapped.
+try:
+    x, k = map(int, raw_input().split())
+except NameError:
+    x, k = map(int, input().split())
+
+# Read the polynomial string from the second line
+try:
+    p = raw_input()
+except NameError:
+    p = input()
+
+# Evaluate the polynomial string with the given value of x
+# The eval() function has access to the variable 'x' in the current scope
+result = eval(p)
+
+# Print True if P(x) == k, otherwise False
+print(result == k)
