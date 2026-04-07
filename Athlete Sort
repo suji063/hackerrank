@@ -1,0 +1,27 @@
+import sys
+
+def sort_athletes():
+    # Read N and M
+    line1 = sys.stdin.readline().split()
+    if not line1:
+        return
+    n, m = map(int, line1)
+    
+    # Read the athlete rows
+    athletes = []
+    for _ in range(n):
+        athletes.append(list(map(int, sys.stdin.readline().split())))
+    
+    # Read the attribute index K
+    k = int(sys.stdin.readline().strip())
+    
+    # Sort based on the K-th attribute
+    # Python's sort is stable by default
+    athletes.sort(key=lambda x: x[k])
+    
+    # Print the resulting table
+    for row in athletes:
+        print(*(row))
+
+if __name__ == "__main__":
+    sort_athletes()
