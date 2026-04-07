@@ -1,0 +1,20 @@
+import sys
+
+# Read N (students) and X (subjects)
+lines = sys.stdin.readlines()
+n, x = map(int, lines[0].split())
+
+# Read subjects, convert to float for precise division
+subject_scores = []
+for i in range(1, x + 1):
+    scores = map(float, lines[i].split())
+    subject_scores.append(list(scores))
+
+# zip(*subject_scores) unpacks the lists and pairs scores by student
+# E.g., for 3 subjects and 5 students, it produces 5 tuples of 3 scores.
+student_data = zip(*subject_scores)
+
+# Calculate and print the average for each student
+for student in student_data:
+    average = sum(student) / x
+    print(round(average, 1)) # Output with 1 decimal place
