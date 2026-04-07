@@ -1,0 +1,30 @@
+def is_subset_check():
+    """
+    Reads input according to the problem description and prints 
+    True if set A is a subset of set B, False otherwise.
+    """
+    try:
+        T = int(input()) # Read the number of test cases
+        for _ in range(T):
+            # Read set A
+            _ = int(input())
+            A = set(map(int, input().split()))
+            
+            # Read set B
+            _ = int(input())
+            B = set(map(int, input().split()))
+            
+            # Check if A is a subset of B and print the result
+            # Using the issubset() method or A <= B works
+            print(A.issubset(B))
+            
+    except ValueError:
+        # Handle potential input errors gracefully
+        pass
+    except EOFError:
+        # Handle end of file errors if input stream ends unexpectedly
+        pass
+
+# If running as a script, call the function
+if __name__ == "__main__":
+    is_subset_check()
