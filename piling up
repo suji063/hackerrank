@@ -1,0 +1,36 @@
+import sys
+
+def solve():
+    # Read number of test cases
+    t_str = sys.stdin.readline().strip()
+    if not t_str: return
+    t = int(t_str)
+    
+    for _ in range(t):
+        n = int(sys.stdin.readline().strip())
+        blocks = list(map(int, sys.stdin.readline().split()))
+        
+        left = 0
+        right = n - 1
+        last_picked = float('inf')
+        possible = True
+        
+        while left <= right:
+            # Pick the larger of the two ends
+            if blocks[left] >= blocks[right]:
+                current = blocks[left]
+                left += 1
+            else:
+                current = blocks[right]
+                right -= 1
+            
+            # Check if it fits on the pile
+            if current > last_picked:
+                possible = False
+                break
+            last_picked = current
+            
+        print("Yes" if possible else "No")
+
+if __name__ == "__main__":
+    solve()
